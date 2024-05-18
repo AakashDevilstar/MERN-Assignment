@@ -4,7 +4,7 @@ import { FaEdit } from 'react-icons/fa'
 import {IoAddCircleSharp} from 'react-icons/io5'
 import {MdDelete} from 'react-icons/md'
 
-const Cards = ({home}) => {
+const Cards = ({home,setinputdatashow}) => {
 
    const data=[
     {
@@ -49,10 +49,10 @@ const Cards = ({home}) => {
             </div>
         </div>
         ))}
-        {home==="true" && <div className='bg-gray-800 rounded-xl p-4 flex flex-col items-center justify-center hover:scale-105 cursor-pointer transition-all duration-300'>
+        {home==="true" && <button onClick={()=>setinputdatashow("fixed")} className='bg-gray-800 rounded-xl p-4 flex flex-col items-center justify-center hover:scale-105 cursor-pointer transition-all duration-300'>
             <IoAddCircleSharp className='text-5xl'/>
            <h2 className='text-2xl mt-4'>Add Task</h2>
-        </div>}
+        </button>}
     </div>
   )
 }
