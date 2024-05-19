@@ -11,17 +11,13 @@ const TaskSchema=new mongoose.Schema({
         unique:true,
     },
     important:{
-        type:boolean,
+        type:Boolean,
         default:false,
     },
     completed:{
-        type:boolean,
+        type:Boolean,
         default:false,
-    },
-    incompleted:{
-        type:boolean,
-        default:false,
-    },
+    }
 },{timestamps:true});
 
 module.exports=mongoose.model("Task",TaskSchema);
