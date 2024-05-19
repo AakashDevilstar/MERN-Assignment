@@ -34,7 +34,7 @@ const Cards = ({home,setinputdatashow,data,setupdatedData}) => {
   const headers={id:localStorage.getItem("id"),authorization:`Bearer ${localStorage.getItem("token")}`,};
   const handleCompleteTask=async(id)=>{
     try{
-        const res=await axios.put(`http://localhost:1000/api/v2/updatecomptask/${id}`,
+        const res=await axios.put(`https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v2/updatecomptask/${id}`,
         {}, // put ke time pe phele data bejo then headers but ham data nhi bej rahe hai
         {headers}
     );
@@ -46,7 +46,7 @@ const Cards = ({home,setinputdatashow,data,setupdatedData}) => {
   }
   const handleImportant=async(id)=>{
     try{
-        const res=await axios.put(`http://localhost:1000/api/v2/updateimptask/${id}`,
+        const res=await axios.put(`https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v2/updateimptask/${id}`,
         {}, // put ke time pe phele data bejo then headers but ham data nhi bej rahe hai
         {headers}
     );
@@ -59,7 +59,7 @@ const Cards = ({home,setinputdatashow,data,setupdatedData}) => {
 
   const handledelete=async(id)=>{
     try{
-        const res=await axios.delete(`http://localhost:1000/api/v2/deletetask/${id}`,
+        const res=await axios.delete(`https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v2/deletetask/${id}`,
         {headers}
     );
         console.log(res);

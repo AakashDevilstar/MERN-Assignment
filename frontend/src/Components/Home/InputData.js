@@ -21,7 +21,7 @@ const InputData = ({inputdatashow,setinputdatashow, updatedData,setupdatedData})
             alert("All field are req!!!!")
         }
         try{
-            await axios.post("http://localhost:1000/api/v2/createtask",
+            await axios.post("https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v2/createtask",
                 Data,
                 {headers}
             )
@@ -38,7 +38,7 @@ const InputData = ({inputdatashow,setinputdatashow, updatedData,setupdatedData})
             alert("All field are req!!!!")
         }
         try{
-            await axios.put(`http://localhost:1000/api/v2/updatetask/${updatedData.id}`,
+            await axios.put(`https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v2/updatetask/${updatedData.id}`,
                 Data,
                 {headers}
             )

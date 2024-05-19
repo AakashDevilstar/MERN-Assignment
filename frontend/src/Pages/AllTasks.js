@@ -15,7 +15,7 @@ const AllTasks = () => {
     const headers={id:localStorage.getItem("id"),authorization:`Bearer ${localStorage.getItem("token")}`,};
     useEffect(()=>{
       const fetch=async()=>{
-          const response=await axios.get("http://localhost:1000/api/v2/getalltasks",{
+          const response=await axios.get("https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v2/getalltasks",{
               headers,
           });
           console.log(response.data.data);

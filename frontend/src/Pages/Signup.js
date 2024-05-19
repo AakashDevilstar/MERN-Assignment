@@ -21,7 +21,7 @@ const Signup = () => {
       if(Data.username === "" || Data.email==="" || Data.password===""){
         alert("All field are required!!!");
       }else{
-        const response=await axios.post("http://localhost:1000/api/v1/signup",Data);
+        const response=await axios.post("https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v1/signup",Data);
         setData({username:"",email:"",password:""});
         alert(response.data.message);
         navigate("/login");

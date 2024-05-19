@@ -23,7 +23,7 @@ const Login = () => {
       if(Data.username === "" || Data.password===""){
         alert("All field are required!!!");
       }else{
-        const response=await axios.post("http://localhost:1000/api/v1/login",Data);
+        const response=await axios.post("https://mern-assignment-2geqo2vun-aakashs-projects-a0b7af11.vercel.app/api/v1/login",Data);
         setData({username:"",password:""});
         localStorage.setItem("id",response.data.id);
         localStorage.setItem("token",response.data.token);
