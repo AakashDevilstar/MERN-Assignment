@@ -7,7 +7,7 @@ router.post("/signup", async (req, res) => {
     try {
         const { username, email } = req.body;
         const existingUser = await User.findOne({ username: username });
-        const existEmail = await User.findOne({ email: email });
+        const existEmail = await  User.findOne({ email: email });
 
         if (existingUser) {
             return res.status(400).json({
@@ -44,7 +44,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-router.get("/login",async(req,res)=>{
+router.post("/login",async(req,res)=>{
     try{
         const { username,password} = req.body;
         const existingUser = await User.findOne({ username: username });
