@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {CgNotes} from 'react-icons/cg';
 import {MdLabelImportant} from 'react-icons/md';
 import {FaCheckDouble} from 'react-icons/fa';
 import {TbNotebookOff} from 'react-icons/tb'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/auth';
+import axios from 'axios';
 
 const Sidebar = () => {
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
     const data=[
         {
             title:'All Tasks',
@@ -28,20 +33,43 @@ const Sidebar = () => {
             link:"/incompletedTasks",
         },
     ];
+
+    const [Data,setData]=useState();
+
+    const change=()=>{
+        dispatch(authActions.logout());
+        localStorage.clear("id");
+        localStorage.clear("token");
+        navigate('/signup')
+    }
+    const headers={id:localStorage.getItem("id"),authorization:`Bearer ${localStorage.getItem("token")}`,};
+    useEffect(()=>{
+        const fetch=async()=>{
+            const response=await axios.get("http://localhost:1000/api/v2/getalltasks",{
+                headers,
+            });
+            setData(response.data.data);
+            // console.log(response.data.data);
+        };
+        fetch();    
+    },[]);
+
   return (
     <>
-        <div>
-            <h2 className='text-xl font-semibold'>Aakash Raturi</h2>
-            <h4 className='mb-1 text-gray-400'>aakashraturi2001@gmail.com</h4>
-            <hr/>
-        </div>
+       {data && (
+         <div>
+            <h2 className='text-xl font-semibold'>{Data?.username}</h2>
+            <h4 className='mb-1 text-gray-400'>{Data?.email}</h4>
+         <hr/>
+     </div>
+       )}
         <div>
         {data.map((items,i)=>(
             <Link to={items.link} key={i} className='my-2 flex items-center gap-2 p-2 rounded hover:bg-gray-600 hover:p-2 cursor-pointer'>{items.icons} {items.title}</Link>
         ))}
         </div>
         <div>
-            <button className='bg-gray-600 w-full p-2'>
+            <button className='bg-gray-600 w-full p-2' onClick={()=>change()}>
                 Logout
             </button>
         </div>
